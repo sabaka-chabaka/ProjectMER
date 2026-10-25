@@ -45,6 +45,7 @@ public class SchematicBlockData
 			BlockType.Text => CreateText(),
 			BlockType.Interactable => CreateInteractable(),
 			BlockType.Waypoint => CreateWaypoint(),
+			BlockType.HczClutter => CreateHczClutter(),
 			_ => CreateEmpty(true)
 		};
 
@@ -87,6 +88,16 @@ public class SchematicBlockData
 		primitive.NetworkPrimitiveFlags = PrimitiveFlags.None;
 
 		return primitive.gameObject;
+	}
+
+	private GameObject CreateHczClutter()
+	{
+		int clutterType = Properties != null && Properties.TryGetValue("ClutterType", out object clutterTypeObj) ? Convert.ToInt32(clutterTypeObj) : -1;
+		if (HczClutterSpawner.TryGetPrefab(clutterType, out GameObject prefab))
+			return GameObject.Instantiate(prefab);
+
+		Logger.Warn($"HCZ Clutter prefab for ClutterType {clutterType} was not found. Object will be an empty GameObject instead.");
+		return CreateEmpty();
 	}
 
 	private GameObject CreatePrimitive()

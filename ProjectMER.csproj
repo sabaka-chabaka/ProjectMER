@@ -5,7 +5,8 @@
     <TargetFramework>net4.8</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks> 
+    <SL_REFERENCES>D:\Steam\steamapps\common\SCP Secret Laboratory Dedicated Server\SCPSL_Data\Managed</SL_REFERENCES>
   </PropertyGroup>
 
   <ItemGroup>
